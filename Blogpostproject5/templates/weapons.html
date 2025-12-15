@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Weapons list</h1>
+    <table>
+        <tr>
+            <th>Weapon name/</th>
+            <th>Type bullet/</th>
+            <th>Product year/</th>
+        </tr>
+        {% for weapon in weapons %}
+        <tr>
+            <td>{{ weapon.name }}</td>
+            <td>{{ weapon.type_bullet  }}</td>
+            <td>{{ weapon.date|date:"d/m/Y" }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock content %}

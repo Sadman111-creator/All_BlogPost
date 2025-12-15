@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="text-gray-600 body-font">
+  <div class="container px-5 py-24 mx-auto">
+
+    <h1 class="text-3xl font-bold mb-10 text-center">
+      ❤️ My Favorites
+    </h1>
+
+    {% if posts %}
+    <div class="flex flex-wrap -m-4">
+      {% for post in posts %}
+      <div class="md:w-1/3 p-4">
+        <div class="bg-gray-100 p-4 rounded-lg">
+
+          <img src="{{ post.thumbnail.url }}"
+               class="h-40 w-full object-cover rounded mb-3">
+
+          <h2 class="text-lg font-medium text-gray-900">
+            {{ post.title }}
+          </h2>
+
+          <p class="text-sm text-gray-600">
+            {{ post.overview|truncatewords:15 }}
+          </p>
+
+          <a href="{% url 'post_detail' post.slug %}"
+             class="text-red-500 mt-2 inline-block">
+            Read more →
+          </a>
+
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+      <p class="text-center text-gray-500">
+        Hələ favorite postun yoxdur ❤️
+      </p>
+    {% endif %}
+
+  </div>
+</section>
+
+{% endblock content %}
