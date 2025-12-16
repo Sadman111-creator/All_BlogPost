@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 from posts import views
 
@@ -20,8 +20,8 @@ urlpatterns = [
     path('weapons/', views.weapons, name='weapons'),
     path('post/<slug:slug>/favorite/', views.toggle_favorite, name='toggle_favorite'),
     path('favorites/', views.favorite_list, name='favorite_list'),
-    
-    
+    path("polls/", include("polls.urls")),
+    path("admin/", admin.site.urls)
 ]
 
 if settings.DEBUG:
